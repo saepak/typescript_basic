@@ -117,30 +117,34 @@
 ////////////////////////---------LESSON5---------////////////////////////
 
 
-let age: any = 25;
+// let age: any = 25;
 
-age = true;
-console.log(age);
-age = 'hello';
-console.log(age);
-age = { name: 'luigi' };
-console.log(age);
+// age = true;
+// console.log(age);
+// age = 'hello';
+// console.log(age);
+// age = { name: 'luigi' };
+// console.log(age);
 
-//any로 지정하면 아무 타입이나 다 올 수 있음
+// //any로 지정하면 아무 타입이나 다 올 수 있음
 
-let mixed: any[] = []; // 1
+// let mixed: any[] = []; // 1
 
-mixed.push(5);
-mixed.push('mario');
-mixed.push(false);
-console.log(mixed);
+// mixed.push(5);
+// mixed.push('mario');
+// mixed.push(false);
+// console.log(mixed);
 
-let ninja: { name: any, age: any }; // 2
+// let ninja: { name: any, age: any }; // 2
 
-ninja = { name: 'yoshi', age: 25 };
-console.log(ninja);
+// ninja = { name: 'yoshi', age: 25 };
+// console.log(ninja);
 
-ninja = { name: 25, age: 'yoshi' };
-console.log(ninja);
+// ninja = { name: 25, age: 'yoshi' };
+// console.log(ninja);
 
-//오브젝트를 any로 지정하는데는 두가지 방법이 잇음. 1이나 2처럼 하면 됨
+// //오브젝트를 any로 지정하는데는 두가지 방법이 잇음. 1이나 2처럼 하면 됨
+
+////////////////////////---------LESSON6---------////////////////////////
+
+console.log("ddd")
