@@ -147,4 +147,38 @@
 
 ////////////////////////---------LESSON6---------////////////////////////
 
-console.log("ddd")
+// console.log("changed config")
+
+////////////////////////---------LESSON7---------////////////////////////
+
+// let greet: Function
+
+// greet = () => {
+//     console.log('hello, again')
+// }
+
+// const add = (a: number, b: number, c: number | string = 10): void => {
+//     console.log(a + b)
+//     console.log(c)
+// }
+// //void : null/undefined 만 값으로 가질 수 있는 타입이며, 아무 값도 return 하지 않는 함수의 반환 타입을 표시할 때 사용한다.
+
+// add(5,10,'20')
+
+////////////////////////---------LESSON8---------////////////////////////
+
+type StringOrNum = string | number
+type obgWithName = {name: string, uid: StringOrNum}
+//uid의 유니온 타입을 이렇게 지정하면 나중에 쓰기 편함
+
+const logDetails = (uid: StringOrNum, item: string) => {
+    console.log(`${item} has a uid of ${uid}`)
+}
+
+const greet = (user: obgWithName) => {
+    console.log(`${user.name} says hello`)
+}
+
+const greetAgain = (user: obgWithName) => {
+    console.log(`${user.name} says hello`)
+}
