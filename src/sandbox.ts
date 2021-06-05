@@ -167,18 +167,54 @@
 
 ////////////////////////---------LESSON8---------////////////////////////
 
-type StringOrNum = string | number
-type obgWithName = {name: string, uid: StringOrNum}
-//uid의 유니온 타입을 이렇게 지정하면 나중에 쓰기 편함
+// type StringOrNum = string | number
+// type obgWithName = {name: string, uid: StringOrNum}
+// //uid의 유니온 타입을 이렇게 지정하면 나중에 쓰기 편함
 
-const logDetails = (uid: StringOrNum, item: string) => {
-    console.log(`${item} has a uid of ${uid}`)
+// const logDetails = (uid: StringOrNum, item: string) => {
+//     console.log(`${item} has a uid of ${uid}`)
+// }
+
+// const greet = (user: obgWithName) => {
+//     console.log(`${user.name} says hello`)
+// }
+
+// const greetAgain = (user: obgWithName) => {
+//     console.log(`${user.name} says hello`)
+// }
+
+////////////////////////---------LESSON9---------////////////////////////
+
+//<<example1>>
+let greet: (a: string, b: string) => void
+// ()안에 있는건 전부 parameter임 그래서 바뀔수있음 (타입만 매치하면됨)
+
+greet = (name: string, greeting: string) => {
+    console.log(`${name} says ${greeting}`)
 }
 
-const greet = (user: obgWithName) => {
-    console.log(`${user.name} says hello`)
+//<<example2>>
+let calc: (a: number, b: number, c: string) => number
+//parameter에는 string이 있지만 반환은 항상 숫자로 하는 경우
+
+calc = (numOne: number, numTwo: number, action: string) => {
+    if(action === 'add') {
+        return numOne + numTwo
+    } else {
+        return numOne - numTwo
+    }
 }
 
-const greetAgain = (user: obgWithName) => {
-    console.log(`${user.name} says hello`)
+
+//<<example3>>
+
+let logDetails: (obj: {name: string, age: number}) => void
+type person = {name: string, age: number}
+
+logDetails = (ninja: person) => {
+    console.log(`${ninja.name} is ${ninja.age} years old`)
 }
+
+
+////////////////////////---------LESSON10---------////////////////////////
+
