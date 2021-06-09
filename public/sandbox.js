@@ -128,15 +128,15 @@
 // }
 ////////////////////////---------LESSON9---------////////////////////////
 //<<example1>>
-var greet;
+let greet;
 // ()안에 있는건 전부 parameter임 그래서 바뀔수있음 (타입만 매치하면됨)
-greet = function (name, greeting) {
-    console.log(name + " says " + greeting);
+greet = (name, greeting) => {
+    console.log(`${name} says ${greeting}`);
 };
 //<<example2>>
-var calc;
+let calc;
 //parameter에는 string이 있지만 반환은 항상 숫자로 하는 경우
-calc = function (numOne, numTwo, action) {
+calc = (numOne, numTwo, action) => {
     if (action === 'add') {
         return numOne + numTwo;
     }
@@ -145,8 +145,8 @@ calc = function (numOne, numTwo, action) {
     }
 };
 //<<example3>>
-var logDetails;
-logDetails = function (ninja) {
-    console.log(ninja.name + " is " + ninja.age + " years old");
+let logDetails;
+logDetails = (ninja) => {
+    console.log(`${ninja.name} is ${ninja.age} years old`);
 };
 ////////////////////////---------LESSON10---------////////////////////////
