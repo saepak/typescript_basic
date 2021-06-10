@@ -1,10 +1,20 @@
 import { Invoice } from './classes/Invoice.js';
-// const anchor = document.querySelector('a')!
-// //!는 특정코드가 null이 아님을 알려줌/ 여기서 !없으면 하단  console.log(anchor.href) 에러남  
-// if(anchor){
-//     console.log(anchor.href)
-// }
-// // console.log(anchor.href)
+const me = {
+    name: 'shaun',
+    age: 30,
+    speak(text) {
+        console.log(text);
+    },
+    spend(amount) {
+        console.log('I spent', amount);
+        return amount;
+    }
+};
+console.log(me);
+const greetPerson = (person) => {
+    console.log('hello', person.name);
+};
+greetPerson(me);
 const invOne = new Invoice('mario', 'mario website', 240);
 const invTwo = new Invoice('luigi', 'luigi website', 290);
 let invoices = [];
