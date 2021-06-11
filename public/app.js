@@ -1,4 +1,5 @@
 import { Invoice } from './classes/Invoice.js';
+import { Payment } from './classes/Payment.js';
 const me = {
     name: 'shaun',
     age: 30,
@@ -10,9 +11,9 @@ const me = {
         return amount;
     }
 };
-console.log(me);
+// console.log(me)
 const greetPerson = (person) => {
-    console.log('hello', person.name);
+    // console.log('hello', person.name)
 };
 greetPerson(me);
 const invOne = new Invoice('mario', 'mario website', 240);
@@ -22,15 +23,22 @@ let invoices = [];
 invoices.push(invOne);
 invoices.push(invTwo);
 invoices.forEach(inv => {
-    console.log(inv.format());
+    // console.log(inv.format())
 });
 const form = document.querySelector('.new-item-form');
-console.log(form.children);
+// console.log(form.children)
 const type = document.querySelector('#type');
 const tofrom = document.querySelector('#tofrom');
 const details = document.querySelector('#details');
 const amount = document.querySelector('#amount');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(type.value, tofrom.value, details.value, amount.value);
+    let doc; // 결과를 스트링으로 나오게 해줌
+    if (type.value === 'invoice') {
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    else {
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    console.log(doc);
 });
