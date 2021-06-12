@@ -1,4 +1,5 @@
 import {Invoice} from './classes/Invoice.js'
+import { ListTemplate } from './classes/ListTemplates.js'
 import {Payment} from './classes/Payment.js'
 import {HasFormatter} from './interfaces/HasFormatter.js'
 
@@ -72,10 +73,15 @@ const tofrom = document.querySelector('#tofrom') as HTMLInputElement
 const details = document.querySelector('#details') as HTMLInputElement
 const amount = document.querySelector('#amount') as HTMLInputElement
 
+//list template instance
+const ul = document.querySelector('ul')!
+// ! 없으면 에러남
+const list = new ListTemplate(ul)
+
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault()
 
-    let doc: HasFormatter // 결과를 스트링으로 나오게 해줌
+    let doc: HasFormatter // 결과를 스트링으로 나오게 해줌?
 
     if(type.value === 'invoice'){
         doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber)
@@ -83,5 +89,6 @@ form.addEventListener('submit', (e: Event) => {
         doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
     }
 
-    console.log(doc)
+    // console.log(doc)
+    list.render(doc, type.value, 'end')
 })
