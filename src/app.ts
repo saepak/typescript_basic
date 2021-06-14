@@ -92,3 +92,36 @@ form.addEventListener('submit', (e: Event) => {
     // console.log(doc)
     list.render(doc, type.value, 'end')
 })
+
+//Generic
+
+const addUID = <T extends {name: string}>(obj: T) => {
+    let uid = Math.floor(Math.random() * 100)
+    return {...obj, uid}
+}
+//T로 감싸줘서 이 안에 있는 모든 펑션을 캡쳐함 그래서 ,docOne.name에 접근할수잇음
+
+let docOne = addUID({name:'yoshi', age: 40})
+
+console.log(docOne.name)
+
+// with interfaces
+interface Resource<T> {
+    uid: number
+    resourceName: string
+    data: T
+}
+//T를 넣으면 어떤 데이터 타입이든 패스할수잇음, 더 유연하게 데이터 저장가능
+
+const docThree: Resource<object> = {
+    uid: 1,
+    resourceName: 'person',
+    data: {name : 'shaun'}
+}
+
+const docFour: Resource<string[]> = {
+    uid: 1,
+    resourceName: 'shopping list',
+    data: ['bread', 'milk']
+}
+
