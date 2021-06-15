@@ -48,7 +48,7 @@ form.addEventListener('submit', (e) => {
     // console.log(doc)
     list.render(doc, type.value, 'end');
 });
-//Generic
+////////////////////////////////// Generic & ENUMS ///////////////////////////////
 const addUID = (obj) => {
     let uid = Math.floor(Math.random() * 100);
     return Object.assign(Object.assign({}, obj), { uid });
@@ -56,14 +56,23 @@ const addUID = (obj) => {
 //T로 감싸줘서 이 안에 있는 모든 펑션을 캡쳐함 그래서 ,docOne.name에 접근할수잇음
 let docOne = addUID({ name: 'yoshi', age: 40 });
 console.log(docOne.name);
+// with interfaces
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
+    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
+    ResourceType[ResourceType["FILM"] = 2] = "FILM";
+    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
+    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
+})(ResourceType || (ResourceType = {}));
 //T를 넣으면 어떤 데이터 타입이든 패스할수잇음, 더 유연하게 데이터 저장가능
 const docThree = {
     uid: 1,
-    resourceName: 'person',
+    resourceType: ResourceType.PERSON,
     data: { name: 'shaun' }
 };
 const docFour = {
     uid: 1,
-    resourceName: 'shopping list',
+    resourceType: ResourceType.BOOK,
     data: ['bread', 'milk']
 };

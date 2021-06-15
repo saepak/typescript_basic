@@ -93,7 +93,7 @@ form.addEventListener('submit', (e: Event) => {
     list.render(doc, type.value, 'end')
 })
 
-//Generic
+////////////////////////////////// Generic & ENUMS ///////////////////////////////
 
 const addUID = <T extends {name: string}>(obj: T) => {
     let uid = Math.floor(Math.random() * 100)
@@ -106,22 +106,28 @@ let docOne = addUID({name:'yoshi', age: 40})
 console.log(docOne.name)
 
 // with interfaces
+
+enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON }
+
 interface Resource<T> {
     uid: number
-    resourceName: string
+    resourceType: ResourceType
     data: T
 }
 //T를 넣으면 어떤 데이터 타입이든 패스할수잇음, 더 유연하게 데이터 저장가능
 
 const docThree: Resource<object> = {
     uid: 1,
-    resourceName: 'person',
+    resourceType: ResourceType.PERSON,
     data: {name : 'shaun'}
 }
 
 const docFour: Resource<string[]> = {
     uid: 1,
-    resourceName: 'shopping list',
+    resourceType: ResourceType.BOOK,
     data: ['bread', 'milk']
 }
+
+
+
 
