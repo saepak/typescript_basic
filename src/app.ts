@@ -81,13 +81,21 @@ const list = new ListTemplate(ul)
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault()
 
+    //tuples
+    let values: [string, string, number]
+    values = [tofrom.value, details.value, amount.valueAsNumber]
+
     let doc: HasFormatter // 결과를 스트링으로 나오게 해줌?
 
     if(type.value === 'invoice'){
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber)
+        doc = new Invoice(...values)
     }else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
+        doc = new Payment(...values)
     }
+
+    tofrom.value = ''
+    details.value = ''
+    amount.value = ''
 
     // console.log(doc)
     list.render(doc, type.value, 'end')
@@ -127,6 +135,8 @@ const docFour: Resource<string[]> = {
     resourceType: ResourceType.BOOK,
     data: ['bread', 'milk']
 }
+
+
 
 
 

@@ -38,13 +38,19 @@ const ul = document.querySelector('ul');
 const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    //tuples
+    let values;
+    values = [tofrom.value, details.value, amount.valueAsNumber];
     let doc; // 결과를 스트링으로 나오게 해줌?
     if (type.value === 'invoice') {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
+    tofrom.value = '';
+    details.value = '';
+    amount.value = '';
     // console.log(doc)
     list.render(doc, type.value, 'end');
 });
